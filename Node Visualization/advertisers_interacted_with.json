@@ -1,0 +1,222 @@
+{
+    "nodes": [
+
+        {
+            "title": "YETI",
+            "action": "Clicked Ad",
+            "id": 1
+        },
+        {
+            "title": "Megalopolis: City of Collectibles",
+            "action": "Clicked Ad",
+            "id": 2
+        },
+        {
+            "title": "Subscribe Now",
+            "action": "Clicked Ad",
+            "id": 3
+        },
+        {
+            "title": "Have your Say",
+            "action": "Clicked Ad",
+            "id": 4
+        },
+        {
+            "title": "Tide",
+            "action": "Clicked Ad",
+            "id": 5
+        },
+        {
+            "title": "Explore Gold Country (@goldcountrybc) \u00e2\u0080\u00a2 Instagram photos and videos",
+            "action": "Clicked Ad",
+            "id": 6
+        },
+        {
+            "title": "5 Year Product Guarantee",
+            "action": "Clicked Ad",
+            "id": 7
+        },
+        {
+            "title": "LOOP Canada Outlet Store",
+            "action": "Clicked Ad",
+            "id": 8
+        },
+        {
+            "title": "{{product.name}}",
+            "action": "Clicked Ad",
+            "id": 9
+        },
+        {
+            "title": "Summer Staycation with Deeper",
+            "action": "Clicked Ad",
+            "id": 10
+        },
+        {
+            "title": "The XPS 13",
+            "action": "Clicked Ad",
+            "id": 11
+        },
+        {
+            "title": "Emily Carr University of Art + Design",
+            "action": "Clicked Ad",
+            "id": 12
+        },
+        {
+            "title": "Flare Audio",
+            "action": "Clicked Ad",
+            "id": 13
+        },
+        {
+            "title": "{{product.name}}",
+            "action": "Clicked Ad",
+            "id": 14
+        },
+        {
+            "title": "{{product.description | titleize}}",
+            "action": "Clicked Ad",
+            "id": 15
+        },
+        {
+            "title": "Discover products in electronics and more!\n{{product.description | titleize}}",
+            "action": "Clicked Ad",
+            "id": 16
+        },
+        {
+            "title": "Discover products in electronics and more!\n{{product.description | titleize}}",
+            "action": "Clicked Ad",
+            "id": 17
+        },
+        {
+            "title": "Discover products in electronics and more!\n{{product.description | titleize}}",
+            "action": "Clicked Ad",
+            "id": 18
+        },
+        {
+            "title": "Pacific Northwest Yachts",
+            "action": "Clicked Ad",
+            "id": 19
+        },
+        {
+            "title": "{{product.description | titleize}}",
+            "action": "Clicked Ad",
+            "id": 20
+        },
+        {
+            "title": "Subscribe Now",
+            "action": "Clicked Ad",
+            "id": 21
+        },
+        {
+            "title": "Click to Order Delivery",
+            "action": "Clicked Ad",
+            "id": 22
+        },
+        {
+            "title": "Loop Tackle",
+            "action": "Clicked Ad",
+            "id": 23
+        },
+        {
+            "title": "advertisers interacted with",
+            "id": 24
+        }
+    ],
+
+    "links": [{
+            "source": 24,
+            "target": 1
+        },
+        {
+            "source": 24,
+            "target": 2
+        },
+        {
+            "source": 24,
+            "target": 3
+        },
+        {
+            "source": 24,
+            "target": 4
+        },
+        {
+            "source": 24,
+            "target": 5
+        },
+        {
+            "source": 24,
+            "target": 6
+        },
+        {
+            "source": 24,
+            "target": 7
+        },
+        {
+            "source": 24,
+            "target": 8
+        },
+        {
+            "source": 24,
+            "target": 9
+        },
+        {
+            "source": 24,
+            "target": 10
+        },
+        {
+            "source": 24,
+            "target": 11
+        },
+        {
+            "source": 24,
+            "target": 12
+        },
+        {
+            "source": 24,
+            "target": 13
+        },
+        {
+            "source": 24,
+            "target": 14
+        },
+        {
+            "source": 24,
+            "target": 15
+        },
+        {
+            "source": 24,
+            "target": 16
+        },
+        {
+            "source": 24,
+            "target": 17
+        },
+        {
+            "source": 24,
+            "target": 18
+        },
+        {
+            "source": 24,
+            "target": 19
+        },
+        {
+            "source": 24,
+            "target": 20
+        },
+        {
+            "source": 24,
+            "target": 21
+        },
+        {
+            "source": 24,
+            "target": 22
+        },
+        {
+            "source": 24,
+            "target": 23
+        },
+        {
+            "source": 24,
+            "target": 24
+        }
+    ]
+}
