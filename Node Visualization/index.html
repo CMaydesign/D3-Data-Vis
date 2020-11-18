@@ -1,119 +1,177 @@
-<!-- Code from d3-graph-gallery.com -->
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style>
+    .link {
+        stroke: #000;
+    }
+    
+    .node {
+        stroke: #fff;
+    }
+    
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+</style>
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+<body>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script>
+        var width = 2600,
+            height = 1500;
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+        var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
 
+        var force = d3.layout.force()
+            .size([width, height]);
 
-<script>
-    // set the dimensions and margins of the graph
-    var margin = {
-            top: 10,
-            right: 30,
-            bottom: 30,
-            left: 40
-        },
-        width = 400 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        d3.csv("ad-interests-simplify.csv", function(error, links) {
+            if (error) throw error;
 
-    // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+            var nodesByName = {};
 
-    d3.json("advertisers_interacted_with.json", function(data) {
+            // Create nodes for each unique source and target.
+            links.forEach(function(link) {
+                link.source = nodeByName(link.source);
+                link.target = nodeByName(link.target);
+            });
 
-        // Initialize the links
-        var link = svg
-            .selectAll("line")
-            .data(data.links)
-            .enter()
-            .append("line")
-            .style("stroke", "#aaa")
+            // Extract the array of nodes from the map by name.
+            var nodes = d3.values(nodesByName);
 
-        // Initialize the nodes
-        var node = svg
-            .selectAll("circle")
-            .data(data.nodes)
-            .enter()
-            .append("circle")
-            .attr("r", 20)
-            .style("fill", "#69b3a2")
+            // Create the link lines.
+            var link = svg.selectAll(".link")
+                .data(links)
+                .enter().append("line")
+                .attr("class", "link");
 
-        // Let's list the force we wanna apply on the network
-        var simulation = d3.forceSimulation(data.nodes) // Force algorithm is applied to data.nodes
-            .force("link", d3.forceLink() // This force provides links between nodes
-                .id(function(d) {
-                    return d.id;
-                }) // This provide  the id of a node
-                .links(data.links) // and this the list of links
-            )
-            .force("charge", d3.forceManyBody().strength(-400)) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-            .force("center", d3.forceCenter(width / 2, height / 2)) // This force attracts nodes to the center of the svg area
-            .on("end", ticked);
-
-        // This function is run at each iteration of the force algorithm, updating the nodes position.
-        function ticked() {
-            link
-                .attr("x1", function(d) {
-                    return d.source.x;
-                })
-                .attr("y1", function(d) {
-                    return d.source.y;
-                })
-                .attr("x2", function(d) {
-                    return d.target.x;
-                })
-                .attr("y2", function(d) {
-                    return d.target.y;
-                });
-
-            node
-                .attr("cx", function(d) {
-                    return d.x + 6;
-                })
-                .attr("cy", function(d) {
-                    return d.y - 6;
-                });
-        }
-        var iterator = 0; // this is going to be your identifier
-
-        function addIdentifier(target) {
-            target.id = iterator;
-            iterator++;
-        }
-
-        function loop(obj) {
-
-            for (var i in obj) {
-
-                var c = obj[i];
-
-                if (typeof c === 'object') {
-
-                    if (c.length === undefined) {
-
-                        //c is not an array
-                        addIdentifier(c);
-
-                    }
-
-                    loop(c);
-
+            // Create the node circles.
+            var node = svg.selectAll(".node")
+                .data(nodes)
+                .enter().append("circle")
+                .attr("class", "node")
+                .attr("r", 10)
+                .call(force.drag);
+            // values for all forces
+            forceProperties = {
+                center: {
+                    x: 0.5,
+                    y: 0.5
+                },
+                charge: {
+                    enabled: true,
+                    strength: -30,
+                    distanceMin: 1,
+                    distanceMax: 2000
+                },
+                collide: {
+                    enabled: true,
+                    strength: .7,
+                    iterations: 1,
+                    radius: 5
+                },
+                forceX: {
+                    enabled: false,
+                    strength: .1,
+                    x: .5
+                },
+                forceY: {
+                    enabled: false,
+                    strength: .1,
+                    y: .5
+                },
+                link: {
+                    enabled: true,
+                    distance: 30,
+                    iterations: 1
                 }
-
             }
 
-        }
+            // add forces to the simulation
+            function initializeForces() {
+                // add forces and associate each with a name
+                simulation
+                    .force("link", d3.forceLink())
+                    .force("charge", d3.forceManyBody())
+                    .force("collide", d3.forceCollide())
+                    .force("center", d3.forceCenter())
+                    .force("forceX", d3.forceX())
+                    .force("forceY", d3.forceY());
+                // apply properties to each of the forces
+                updateForces();
+            }
 
-        loop(data); // json is your input object
-    });
-</script>
+            // apply new force properties
+            function updateForces() {
+                // get each force by name and update the properties
+                simulation.force("center")
+                    .x(width * forceProperties.center.x)
+                    .y(height * forceProperties.center.y);
+                simulation.force("charge")
+                    .strength(forceProperties.charge.strength * forceProperties.charge.enabled)
+                    .distanceMin(forceProperties.charge.distanceMin)
+                    .distanceMax(forceProperties.charge.distanceMax);
+                simulation.force("collide")
+                    .strength(forceProperties.collide.strength * forceProperties.collide.enabled)
+                    .radius(forceProperties.collide.radius)
+                    .iterations(forceProperties.collide.iterations);
+                simulation.force("forceX")
+                    .strength(forceProperties.forceX.strength * forceProperties.forceX.enabled)
+                    .x(width * forceProperties.forceX.x);
+                simulation.force("forceY")
+                    .strength(forceProperties.forceY.strength * forceProperties.forceY.enabled)
+                    .y(height * forceProperties.forceY.y);
+                simulation.force("link")
+                    .id(function(d) {
+                        return d.id;
+                    })
+                    .distance(forceProperties.link.distance)
+                    .iterations(forceProperties.link.iterations)
+                    .links(forceProperties.link.enabled ? graph.links : []);
+
+                // updates ignored until this is run
+                // restarts the simulation (important if simulation has already slowed down)
+                simulation.alpha(1).restart();
+            }
+            // Start the force layout.
+            force
+                .nodes(nodes)
+                .links(links)
+                .on("tick", tick)
+                .linkDistance(200)
+                .charge(-300)
+                .start();
+
+
+            function tick() {
+                link.attr("x1", function(d) {
+                        return d.source.x;
+                    })
+                    .attr("y1", function(d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function(d) {
+                        return d.target.x;
+                    })
+                    .attr("y2", function(d) {
+                        return d.target.y;
+                    });
+
+                node.attr("cx", function(d) {
+                        return d.x;
+                    })
+                    .attr("cy", function(d) {
+                        return d.y;
+                    });
+            }
+
+            function nodeByName(name) {
+                return nodesByName[name] || (nodesByName[name] = {
+                    name: name
+                });
+            }
+        });
+    </script>
