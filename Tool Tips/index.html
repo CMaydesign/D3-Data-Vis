@@ -23,7 +23,6 @@
 </style>
 
 <body>
-
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
         // keep track of if tooltip is hidden or not
@@ -35,8 +34,8 @@
             .attr("width", width)
             .attr("height", height);
 
-        var force = d3.layout.force()
-            .size([width, height]);
+        // var force = d3.layout.force()
+        //     .size([width, height]);
 
 
         d3.csv("ad-interests-simplify.csv", function(error, links) {
@@ -70,10 +69,9 @@
                 .enter().append("circle")
                 .attr("class", "node")
                 .attr("r", 10)
-                .call(force.drag)
-                // Make Ad topics largest node
+                .call(drag)
+                .on("click", clickNode)
 
-            var ad = d3.select('#1').style('r', '50');
             // values for all forces
             forceProperties = {
                 center: {
@@ -124,41 +122,48 @@
             }
 
 
-            var tip;
-            node.on("click", function(d) {
-                if (tip) tip.remove();
+            function clickNode(node) {
+                // update visibility
+                isTooltipHidden = !isTooltipHidden;
+                var visibility = (isTooltipHidden) ? "hidden" : "visible";
 
-                tip = svg.append("g")
-                    .attr("transform", "translate(" + d.x + "," + d.y + ")");
+                // load tooltip content (if it changes based on node)
+                loadTooltipContent(node);
 
-                var rect = tip.append("rect")
-                    .style("fill", "red")
-                    .style("stroke", "steelblue");
+                if (isTooltipHidden) {
+                    unPinNode(node);
+                }
 
+                // place tooltip where cursor was
+                return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px").style("visibility", visibility);
+            }
+            // reset nodes to not be pinned
+            function unPinNode(node) {
+                node.fx = null;
+                node.fy = null;
+            }
+            // add html content to tooltip
+            function loadTooltipContent(node) {
+                var htmlContent = "<div>";
+                htmlContent += "<h4>Example tooltip for " + node.id + "<\/h4>"
 
-                tip.append("text")
-                    .text(d.name)
-                    .attr("dy", "1em")
-                    .attr("x", 5);
-
-
-                var con = links
-                    .filter(function(d1) {
-                        return d1.source.id === d.id;
-                    })
-                    .map(function(d1) {
-                        return d1.target.name + " with weight " + d1.weight;
-                    })
-
-                tip.append("text")
-
-                .attr("dy", "3em")
-                    .attr("x", 5);
-
-                var bbox = tip.node().getBBox();
-                rect.attr("width", bbox.width + 20)
-                    .attr("height", bbox.height + 20)
-            });
+                tooltip.html(htmlContent);
+            }
+            // add tooltip to HTML body
+            var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("position", "absolute")
+                .style("padding", "10px")
+                .style("z-index", "10")
+                .style("width", "300px")
+                .style("height", "200px")
+                .style("background-color", "rgba(230, 242, 255, 0.8)")
+                .style("border-radius", "5px")
+                .style("visibility", "hidden")
+                .text("");
+            node.append("title")
+                .text(d => d.id);
             // Start the force layout.
             force
                 .nodes(nodes)
@@ -190,6 +195,15 @@
                         return d.y;
                     });
 
+            }
+            var drag = d3.behavior.drag()
+                .on("drag", dragmove);
+
+
+            function dragmove(d) {
+                var x = d3.event.x;
+                var y = d3.event.y;
+                d3.select(this).attr("transform", "translate(" + x + "," + y + ")");
             }
 
         });
