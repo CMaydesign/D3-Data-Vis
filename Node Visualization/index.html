@@ -17,55 +17,33 @@ https://www.d3indepth.com/scales/   https://github.com/d3/d3/wiki   https://obse
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<style>
-    .container {
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .link {
-        stroke: #2ea6a6;
-    }
-    
-    . body {
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .text {
-        font-family: Cabin;
-        background-color: ;
-    }
-    
-    rect {
-        fill: #1f7392;
-        padding: 10px;
-    }
-    
-    div.tooltip {
-        position: absolute;
-        text-align: center;
-        width: auto;
-        height: auto;
-        padding: 10px;
-        font-family: 12px, Cabin;
-        color: #f7f3ec;
-        background: #1f7392;
-        border: 0px;
-        border-radius: 8px;
-        pointer-events: none;
-    }
-</style>
 
 <body>
-
+    <div id="legend" class="float-right legend">
+        <div id="arts" class="row">arts & culture</div>
+        <div id="edu" class="row">education</div>
+        <div id="tech" class="row">technology</div>
+        <div id="food" class="row">food & drink</div>
+        <div id="travel" class="row">travel</div>
+        <div id="sport" class="row">sports</div>
+        <div id="rec" class="row">recreation</div>
+        <div id="movie" class="row">movies & tv</div>
+        <div id="business" class="row">business</div>
+        <div id="music" class="row">music</div>
+        <div id="retail" class="row">retail</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
         // keep track of if tooltip is hidden or not
         var isTooltipHidden = true;
-        var width = 1000,
-            height = 1000;
+        var width = 1500,
+            height = 1000
 
         //generate svg
         var svg = d3.select("body").append("svg")
@@ -103,28 +81,35 @@ https://www.d3indepth.com/scales/   https://github.com/d3/d3/wiki   https://obse
             // Extract the array of nodes from the map by name.
             var nodes = d3.values(nodesByName);
             //console.log(d.name)
+            //draw div for tooltip on html file
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
             //create color map for values
             var color = d3.scale.ordinal()
-                .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+                .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
                 .range(["#d96725", "#5d7c77", "#207392", "#f7b537", "#9d2327", "#bee3f2", "#f2a866", "#94a187", "#304a37", "#f47c65", "#ffd075"]);
+            //call column id
+            var identifier = d3.map(links, function(d) {
+                    return (d.id)
+                }).keys()
+                //for trouble shooting
+            console.log(identifier)
+
+
             //Create the node circles.
             var node = svg.selectAll(".node")
                 .data(nodes)
                 .enter().append("circle")
                 .attr("class", "node")
-                .attr("r", 10)
+                .attr("r", 15)
                 .call(force.drag)
                 //read data tag use it to identify color value
-                .style("fill", function(d) {
-                    return color(d.name)
+                .style("fill", function(d, i) {
+                    return color(i)
                 })
-
-
-            //generate tooltip and text filler drawn from data
-            .on("mouseover", function(d) {
+                //generate tooltip and text filler drawn from data
+                .on("mouseover", function(d) {
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
@@ -137,8 +122,7 @@ https://www.d3indepth.com/scales/   https://github.com/d3/d3/wiki   https://obse
                         .duration(500)
                         .style("opacity", 0);
                 });
-            //for trouble shooting
-            console.log(id.name)
+
 
 
 
@@ -198,3 +182,4 @@ https://www.d3indepth.com/scales/   https://github.com/d3/d3/wiki   https://obse
             }
         });
     </script>
+</body>
