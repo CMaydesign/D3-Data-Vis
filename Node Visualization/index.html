@@ -1,24 +1,60 @@
 <!DOCTYPE html>
+<!-- Genrate a data visualization showing my related ad topics downloaded from surviellence capitalist like google and facebook, ads are grouped in values from 1-10 representing 
+1.arts and culture
+2.education
+3.technology
+4.food and drink
+5. travel
+6. sports
+7.recreation
+8.movies and tv
+9.business
+10.music
+11.retail
+code pieced together from multiple sources on observables, d3 documentation and github help forums
+https://www.d3indepth.com/scales/   https://github.com/d3/d3/wiki   https://observablehq.com/@d3/force-directed-graph -->
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
 </head>
 <style>
-    .link {
-        stroke: rgb(255, 0, 0);
-    }
-    
-    .node {
-        stroke: rgb(0, 255, 251);
-    }
-    
-    body {
+    .container {
         width: 100%;
         height: 100vh;
     }
     
-    .tipbg {
-        fill: red;
+    .link {
+        stroke: #2ea6a6;
+    }
+    
+    . body {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .text {
+        font-family: Cabin;
+        background-color: ;
+    }
+    
+    rect {
+        fill: #1f7392;
+        padding: 10px;
+    }
+    
+    div.tooltip {
+        position: absolute;
+        text-align: center;
+        width: auto;
+        height: auto;
+        padding: 10px;
+        font-family: 12px, Cabin;
+        color: #f7f3ec;
+        background: #1f7392;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
     }
 </style>
 
@@ -31,23 +67,26 @@
         var width = 1000,
             height = 1000;
 
+        //generate svg
         var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height);
-
+        //generate force area
         var force = d3.layout.force()
             .size([width, height]);
 
-
+        //pull in data from csv
         d3.csv("ad-interests-simplify.csv", function(error, links) {
             if (error) throw error;
-
             var nodesByName = {};
+            var id = {};
 
             // Create nodes for each unique source and target.
             links.forEach(function(link) {
                 link.source = nodeByName(link.source);
                 link.target = nodeByName(link.target);
+                id[link.id.name] = link.id;
+
             });
 
             function nodeByName(name) {
@@ -55,59 +94,53 @@
                     name: name
                 });
             }
-            // Extract the array of nodes from the map by name.
-            var nodes = d3.values(nodesByName);
-
             // Create the link lines.
             var link = svg.selectAll(".link")
                 .data(links)
                 .enter().append("line")
                 .attr("class", "link");
 
-            // Create the node circles.
+            // Extract the array of nodes from the map by name.
+            var nodes = d3.values(nodesByName);
+            //console.log(d.name)
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+            //create color map for values
+            var color = d3.scale.ordinal()
+                .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+                .range(["#d96725", "#5d7c77", "#207392", "#f7b537", "#9d2327", "#bee3f2", "#f2a866", "#94a187", "#304a37", "#f47c65", "#ffd075"]);
+            //Create the node circles.
             var node = svg.selectAll(".node")
                 .data(nodes)
                 .enter().append("circle")
                 .attr("class", "node")
                 .attr("r", 10)
                 .call(force.drag)
-                // Make Ad topics largest node
+                //read data tag use it to identify color value
+                .style("fill", function(d) {
+                    return color(d.name)
+                })
 
-            var ad = d3.select('#1').style('r', '50');
-            // values for all forces
-            forceProperties = {
-                center: {
-                    x: 0.5,
-                    y: 0.5
-                },
-                charge: {
-                    enabled: true,
-                    strength: -30,
-                    distanceMin: 1,
-                    distanceMax: 2000
-                },
-                collide: {
-                    enabled: true,
-                    strength: 1,
-                    iterations: 1,
-                    radius: 5
-                },
-                forceX: {
-                    enabled: false,
-                    strength: .1,
-                    x: .5
-                },
-                forceY: {
-                    enabled: false,
-                    strength: .1,
-                    y: .5
-                },
-                link: {
-                    enabled: true,
-                    distance: 30,
-                    iterations: 1
-                }
-            }
+
+            //generate tooltip and text filler drawn from data
+            .on("mouseover", function(d) {
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html(d.name)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                })
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+            //for trouble shooting
+            console.log(id.name)
+
+
 
             // add forces to the simulation
             function initializeForces() {
@@ -122,43 +155,17 @@
                 // apply properties to each of the forces
                 updateForces();
             }
+            //stop drag on mouse release
+            var drag = force.drag()
+                .on("dragstart", function(d) {
+
+                    d3.select(this).classed("fixed", d.fixed = true);
+                });
 
 
-            var tip;
-            node.on("click", function(d) {
-                if (tip) tip.remove();
-
-                tip = svg.append("g")
-                    .attr("transform", "translate(" + d.x + "," + d.y + ")");
-
-                var rect = tip.append("rect")
-                    .style("fill", "red")
-                    .style("stroke", "steelblue");
 
 
-                tip.append("text")
-                    .text(d.name)
-                    .attr("dy", "1em")
-                    .attr("x", 5);
 
-
-                var con = links
-                    .filter(function(d1) {
-                        return d1.source.id === d.id;
-                    })
-                    .map(function(d1) {
-                        return d1.target.name + " with weight " + d1.weight;
-                    })
-
-                tip.append("text")
-
-                .attr("dy", "3em")
-                    .attr("x", 5);
-
-                var bbox = tip.node().getBBox();
-                rect.attr("width", bbox.width + 20)
-                    .attr("height", bbox.height + 20)
-            });
             // Start the force layout.
             force
                 .nodes(nodes)
@@ -167,9 +174,8 @@
                 .linkDistance(100)
                 .charge(-400)
                 .start();
-
-
-            function tick() {
+            //used to locate nodes
+            function tick(d) {
                 link.attr("x1", function(d) {
                         return d.source.x;
                     })
@@ -189,8 +195,6 @@
                     .attr("cy", function(d) {
                         return d.y;
                     });
-
             }
-
         });
     </script>

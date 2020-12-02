@@ -1,232 +1,232 @@
-id,source,Target
-1,ad topics,
-2,3D printing,1
-3,Acting,1
-4,Adobe Creative Cloud,1
-5,Adobe Creative Suite,1
-6,Adobe InDesign,1
-7,Adobe Photoshop,1
-8,Adventure travel,1
-9,Air travel,1
-10,Album,1
-11,Amazon.com,1
-12,Animated movies,1
+id,source,Target,
+0,ad topics,0,
+3,3D printing,1
+1,Acting,1
+2,Adobe Creative Cloud,1
+2,Adobe Creative Suite,1
+2,Adobe InDesign,1
+2,Adobe Photoshop,1
+5,Adventure travel,1
+5,Air travel,1
+1,Album,1
+5,Amazon.com,1
+8,Animated movies,1
 13,Anime movies,1
-14,Architecture,1
-15,Artificial intelligence,1
-16,Arts and music,1
-17,Autodromo Nazionale Monza,1
-18,Barbecue,1
-19,Beer,1
-20,Behance,1
-21,Boating,1
-22,Boats,1
-23,Bolivia,1
-24,Boromir,1
-25,Boss (TV series),1
-26,British Columbia,1
-27,Bursary,1
-28,Burton Snowboards,1
-29,Business,1
-30,Business process modeling,1
-31,Camping,1
-32,Canada,1
-33,Cereal,1
-34,City,1
-35,Click (2006 film),1
-36,Coffeehouses,1
-37,Collectable,1
-38,Comic book,1
-39,Comics,1
-40,Content strategy,1
-41,Cooking,1
-42,Cork (material),1
-43,Cosmetics,1
-44,Creativity,1
-45,Cuisine,1
-46,Cycling,1
-47,Dave Edmunds,1
-48,Dell,1
-49,Dell XPS,1
-50,Design,1
-51,Desserts,1
-52,Details (magazine),1
-53,Digital art,1
-54,Distribution (business),1
-55,DNA,1
-56,Don (honorific),1
-57,Dry (rapper),1
-58,E-books,1
-59,E-commerce,1
-60,Eat-More,1
-61,Edmonton,1
-62,Edmonton International Airport,1
-63,Electronics,1
-64,Eli Roth,1
-65,Emily Carr University of Art and Design,1
-66,Emotion,1
-67,Entertainment,1
-68,Entre RÃ­os Province,1
-69,Entrepreneurship,1
-70,Essence (magazine),1
-71,Ethics,1
-72,Everything (band),1
-73,Executive education,1
-74,Fairline Boats,1
-75,Family,1
-76,Fantasy movies,1
-77,Farmer,1
-78,Fiction books,1
-79,Final good,1
-80,First-person shooter games,1
-81,Fishing,1
-82,Fishing line,1
-83,Fishing rod,1
-84,Fishing tackle,1
-85,Flare,1
-86,Fly fishing,1
-87,Focus (German magazine),1
-88,Food,1
-89,Foodie,1
-90,Footwear,1
-91,Freight transport,1
-92,French fries,1
-93,Friday (1995 film),1
-94,Friendship,1
-95,Game of Thrones,1
-96,Games,1
-97,Gold Country,1
-98,Gondola lift,1
-99,Good (economics),1
-100,Grant (money),1
-101,Graphic design,1
-102,Guatemala,1
-103,H.E.A.R.,1
-104,HBO,1
-105,Heatwave (band),1
-106,Homo sapiens,1
-107,Hops,1
-108,Horror movies,1
-109,Hostel (2005 film),1
-110,House (TV series),1
-111,Human,1
-112,Hunting,1
-113,Illustration,1
-114,India,1
-115,Industry,1
-116,Instagram,1
-117,Insurance,1
-118,Interaction design,1
-119,J. J. Abrams,1
-120,Jewelry,1
-121,Jonny Wilkinson,1
-122,Jordan Peele,1
-123,Jude Law,1
-124,Kitchen,1
-125,Laptop,1
-126,Life,1
-127,Local food,1
-128,Loop Tackle,1
-129,Love,1
-130,Luxury goods,1
-131,Magazines,1
-132,Marvel Entertainment,1
-133,Marvel Studios,1
-134,Mass production,1
-135,Massachusetts Institute of Technology,1
-136,Massively multiplayer online role-playing games,1
-137,McCain Foods,1
-138,Michael Dell,1
-139,Minimalism,1
-140,MIT Sloan School of Management,1
-141,Moonshine,1
-142,Mountain biking,1
-143,Mountain Equipment Co-op,1
-144,Munchies (film),1
-145,Music download,1
-146,Music festivals,1
-147,Musical instrument,1
-148,Naomie Harris,1
-149,Nation,1
-150,Natural fiber,1
-151,Nintendo,1
-152,Nitro Circus,1
-153,One Day (2011 film),1
-154,Online shopping,1
-155,ONTV (Egypt),1
-156,Organic food,1
-157,Outdoor recreation,1
-158,Outlet store,1
-159,Pacific Northwest,1
-160,Partner (2007 film),1
-161,Patagonia,1
-162,Patagonia (clothing),1
-163,People,1
-164,Photography,1
-165,Podcast,1
-166,Potato,1
-167,Poutine,1
-168,Product (business),1
-169,Product (chemistry),1
-170,Quebec,1
-171,Rabbits,1
-172,Rainbow trout,1
-173,Real estate investing,1
-174,Recipes,1
-175,Recreational fishing,1
-176,Reel,1
-177,Research and development,1
-178,Restaurants,1
-179,Retail,1
-180,Rice,1
-181,Riff Raff (rapper),1
-182,Robot,1
-183,Sava,1
-184,Seafood,1
-185,Shoes,1
-186,Shopping,1
-187,Silver,1
-188,"Sitka, Alaska",1
-189,Ski,1
-190,Slasher film,1
-191,Snowboarding,1
-192,Spectrum,1
-193,Splatter film,1
-194,Stars (Canadian band),1
-195,Staycation,1
-196,Strategic management,1
-197,Streaming media,1
-198,Stress (mechanics),1
-199,Summer,1
-200,Sun Peaks Resort,1
-201,Sunrise,1
-202,Sustainability,1
-203,Tackle (American and Canadian football),1
-204,Take-out,1
-205,Technology,1
-206,Tesla Model S,1
-207,The Fall (2006 film),1
-208,The Official SONiC 102.9 Page,1
-209,Tide (brand),1
-210,Time,1
-211,Tinnitus,1
-212,Tobacco,1
-213,Tourism,1
-214,Toys,1
-215,TransLink (British Columbia),1
-216,Travis Pastrana,1
-217,University,1
-218,User (computing),1
-219,User experience design,1
-220,User interface design,1
-221,Veganism,1
-222,Visual arts,1
-223,Wattpad,1
-224,Web design,1
-225,Web developer,1
-226,Web development,1
-227,Website,1
-228,Wet season,1
-229,Wholesale,1
-230,World Wide Web,1
-231,Yacht,1
+1,Architecture,1
+3,Artificial intelligence,1
+1,Arts and music,1
+6,Autodromo Nazionale Monza,1
+4,Barbecue,1
+4,Beer,1
+2,Behance,1
+7,Boating,1
+7,Boats,1
+5,Bolivia,1
+8,Boromir,1
+8,Boss (TV series),1
+5,British Columbia,1
+9,Bursary,1
+6,Burton Snowboards,1
+9,Business,1
+9,Business process modeling,1
+7,Camping,1
+5,Canada,1
+4,Cereal,1
+5,City,1
+8,Click (2006 film),1
+4,Coffeehouses,1
+7,Collectable,1
+7,Comic book,1
+7,Comics,1
+9,Content strategy,1
+4,Cooking,1
+1,Cork (material),1
+1,Cosmetics,1
+1,Creativity,1
+4,Cuisine,1
+7,Cycling,1
+8,Dave Edmunds,1
+3,Dell,1
+3,Dell XPS,1
+1,Design,1
+4,Desserts,1
+1,Details (magazine),1
+1,Digital art,1
+9,Distribution (business),1
+3,DNA,1
+8,Don (honorific),1
+10,Dry (rapper),1
+1,E-books,1
+9,E-commerce,1
+4,Eat-More,1
+5,Edmonton,1
+5,Edmonton International Airport,1
+3,Electronics,1
+8,Eli Roth,1
+1,Emily Carr University of Art and Design,1
+1,Emotion,1
+7,Entertainment,1
+5,Entre RÃ­os Province,1
+9,Entrepreneurship,1
+1,Essence (magazine),1
+9,Ethics,1
+10,Everything (band),1
+2,Executive education,1
+7,Fairline Boats,1
+1,Family,1
+8,Fantasy movies,1
+9,Farmer,1
+1,Fiction books,1
+9,Final good,1
+3,First-person shooter games,1
+7,Fishing,1
+7,Fishing line,1
+7,Fishing rod,1
+7,Fishing tackle,1
+7,Flare,1
+7,Fly fishing,1
+1,Focus (German magazine),1
+4,Food,1
+4,Foodie,1
+6,Footwear,1
+9,Freight transport,1
+4,French fries,1
+8,Friday (1995 film),1
+1,Friendship,1
+8,Game of Thrones,1
+7,Games,1
+5,Gold Country,1
+6,Gondola lift,1
+9,Good (economics),1
+9,Grant (money),1
+1,Graphic design,1
+5,Guatemala,1
+8,H.E.A.R.,1
+8,HBO,1
+10,Heatwave (band),1
+2,Homo sapiens,1
+4,Hops,1
+8,Horror movies,1
+8,Hostel (2005 film),1
+8,House (TV series),1
+1,Human,1
+7,Hunting,1
+1,Illustration,1
+5,India,1
+9,Industry,1
+3,Instagram,1
+9,Insurance,1
+3,Interaction design,1
+8,J. J. Abrams,1
+11,Jewelry,1
+8,Jonny Wilkinson,1
+8,Jordan Peele,1
+8,Jude Law,1
+4,Kitchen,1
+3,Laptop,1
+1,Life,1
+4,Local food,1
+7,Loop Tackle,1
+1,Love,1
+11,Luxury goods,1
+1,Magazines,1
+8,Marvel Entertainment,1
+8,Marvel Studios,1
+9,Mass production,1
+2,Massachusetts Institute of Technology,1
+7,Massively multiplayer online role-playing games,1
+4,McCain Foods,1
+3,Michael Dell,1
+1,Minimalism,1
+2,MIT Sloan School of Management,1
+4,Moonshine,1
+6,Mountain biking,1
+6,Mountain Equipment Co-op,1
+8,Munchies (film),1
+10,Music download,1
+10,Music festivals,1
+10,Musical instrument,1
+8,Naomie Harris,1
+5,Nation,1
+11,Natural fiber,1
+11,Nintendo,1
+6,Nitro Circus,1
+8,One Day (2011 film),1
+11,Online shopping,1
+8,ONTV (Egypt),1
+4,Organic food,1
+7,Outdoor recreation,1
+11,Outlet store,1
+5,Pacific Northwest,1
+8,Partner (2007 film),1
+5,Patagonia,1
+11,Patagonia (clothing),1
+1,People,1
+7,Photography,1
+8,Podcast,1
+4,Potato,1
+4,Poutine,1
+9,Product (business),1
+9,Product (chemistry),1
+5,Quebec,1
+7,Rabbits,1
+7,Rainbow trout,1
+9,Real estate investing,1
+4,Recipes,1
+7,Recreational fishing,1
+7,Reel,1
+2,Research and development,1
+4,Restaurants,1
+11,Retail,1
+4,Rice,1
+10,Riff Raff (rapper),1
+3,Robot,1
+4,Sava,1
+4,Seafood,1
+11,Shoes,1
+11,Shopping,1
+11,Silver,1
+5,"Sitka, Alaska",1
+6,Ski,1
+8,Slasher film,1
+6,Snowboarding,1
+1,Spectrum,1
+8,Splatter film,1
+10,Stars (Canadian band),1
+5,Staycation,1
+9,Strategic management,1
+8,Streaming media,1
+3,Stress (mechanics),1
+5,Summer,1
+6,Sun Peaks Resort,1
+1,Sunrise,1
+2,Sustainability,1
+6,Tackle (American and Canadian football),1
+4,Take-out,1
+3,Technology,1
+3,Tesla Model S,1
+8,The Fall (2006 film),1
+10,The Official SONiC 102.9 Page,1
+11,Tide (brand),1
+7,Time,1
+3,Tinnitus,1
+11,Tobacco,1
+5,Tourism,1
+11,Toys,1
+5,TransLink (British Columbia),1
+6,Travis Pastrana,1
+2,University,1
+3,User (computing),1
+3,User experience design,1
+3,User interface design,1
+4,Veganism,1
+1,Visual arts,1
+3,Wattpad,1
+3,Web design,1
+3,Web developer,1
+3,Web development,1
+3,Website,1
+5,Wet season,1
+11,Wholesale,1
+3,World Wide Web,1
+6,Yacht,1
